@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>CORTEXUS | Physiotherapy Review</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+padding:20px;
+background:#edf2f7;
+font-family:Segoe UI,sans-serif;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+background:#fff;
+padding:22px;
+border-radius:28px;
+box-shadow:0 15px 40px rgba(0,0,0,.12);
+}
+
+.logo{
+width:100%;
+border-radius:18px;
+display:block;
+margin-bottom:15px;
+}
+
+.thank{
+background:#f7f9fc;
+padding:14px;
+border-radius:14px;
+text-align:center;
+font-weight:700;
+color:#0d47a1;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:10px;
+}
+
+.card{
+padding:14px;
+border:1px solid #ddd;
+border-radius:14px;
+cursor:pointer;
+font-weight:600;
+}
+
+.card.active{
+border:2px solid #d4af37;
+}
+
+.btn{
+width:100%;
+padding:16px;
+border:none;
+border-radius:14px;
+font-weight:700;
+cursor:pointer;
+margin-top:12px;
+}
+
+.generate{
+background:#0d47a1;
+color:white;
+}
+
+.reviewbtn{
+background:#d4af37;
+color:#111;
+}
+
+textarea{
+width:100%;
+height:220px;
+margin-top:12px;
+padding:12px;
+border-radius:14px;
+border:1px solid #ddd;
+font-size:15px;
+}
+
+.note{
+text-align:center;
+font-size:13px;
+color:#555;
+margin-top:10px;
+}
+
+.footer{
+text-align:center;
+padding-top:20px;
+line-height:1.8;
+color:#444;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<img src="cortexus-banner.jpg" class="logo">
+
+<div class="thank">
+THANK YOU FOR CHOOSING CORTEXUS
+</div>
+
+
+<h3>Select Service</h3>
+
+
+<div class="grid">
+
+<div class="card active" onclick="sel(this,'Back Pain Treatment')">
+Back Pain Treatment
+</div>
+
+<div class="card" onclick="sel(this,'Neck Pain Treatment')">
+Neck Pain Treatment
+</div>
+
+<div class="card" onclick="sel(this,'Knee Pain Treatment')">
+Knee Pain Treatment
+</div>
+
+<div class="card" onclick="sel(this,'Sciatica Treatment')">
+Sciatica Treatment
+</div>
+
+<div class="card" onclick="sel(this,'Frozen Shoulder Treatment')">
+Frozen Shoulder Treatment
+</div>
+
+<div class="card" onclick="sel(this,'Stroke Rehabilitation')">
+Stroke Rehabilitation
+</div>
+
+<div class="card" onclick="sel(this,'Paralysis Rehabilitation')">
+Paralysis Rehabilitation
+</div>
+
+<div class="card" onclick="sel(this,'Post Surgery Rehabilitation')">
+Post Surgery Rehabilitation
+</div>
+
+<div class="card" onclick="sel(this,'Neurological Physiotherapy')">
+Neurological Physiotherapy
+</div>
+
+<div class="card" onclick="sel(this,'Orthopedic Physiotherapy')">
+Orthopedic Physiotherapy
+</div>
+
+<div class="card" onclick="sel(this,'Sports Injury Rehabilitation')">
+Sports Injury Rehabilitation
+</div>
+
+<div class="card" onclick="sel(this,'Elderly Care Physiotherapy')">
+Elderly Care Physiotherapy
+</div>
+
+</div>
+
+
+<button class="btn generate" onclick="generateReview()">
+GENERATE REVIEW
+</button>
+
+
+<div class="note">
+Please edit the review according to your personal experience before posting.
+</div>
+
+
+<textarea id="review"></textarea>
+
+
+<button class="btn reviewbtn" onclick="copyAndOpen()">
+COPY REVIEW & OPEN GOOGLE REVIEW
+</button>
+
+
+<div class="footer">
+
+<b>Expert Care You Can Trust</b><br>
+Experienced Professionals<br>
+Personalized Treatment<br><br>
+
+Serving in Lucknow<br>
+
+<b>Better Movement. Better Life.</b>
+
+</div>
+
+
+</div>
+<script>
+
+let selected = "Back Pain Treatment";
+
+
+function sel(el,service){
+
+document.querySelectorAll(".card")
+.forEach(x=>x.classList.remove("active"));
+
+el.classList.add("active");
+
+selected = service;
+
+}
+
+
+
+// Service based words
+
+const data = {
+
+"Back Pain Treatment":{
+problem:[
+"back pain",
+"back stiffness",
+"difficulty in daily movements",
+"lower back discomfort"
+],
+result:[
+"pain gradually reduced",
+"movement became easier",
+"daily activities improved",
+"flexibility increased"
+]
+},
+
+
+"Neck Pain Treatment":{
+problem:[
+"neck pain",
+"neck stiffness",
+"restricted neck movement",
+"discomfort during work"
+],
+result:[
+"neck movement improved",
+"stiffness reduced",
+"comfort increased",
+"daily work became easier"
+]
+},
+
+
+"Knee Pain Treatment":{
+problem:[
+"knee pain",
+"knee stiffness",
+"difficulty in walking and bending",
+"knee weakness"
+],
+result:[
+"walking became easier",
+"knee movement improved",
+"pain reduced gradually",
+"confidence in movement increased"
+]
+},
+
+
+"Sciatica Treatment":{
+problem:[
+"sciatica pain",
+"leg discomfort",
+"nerve related pain",
+"movement difficulty"
+],
+result:[
+"pain reduced",
+"mobility improved",
+"movement became comfortable",
+"daily activities improved"
+]
+},
+
+
+"Frozen Shoulder Treatment":{
+problem:[
+"frozen shoulder",
+"shoulder stiffness",
+"limited shoulder movement",
+"shoulder pain"
+],
+result:[
+"shoulder movement improved",
+"range of motion increased",
+"stiffness reduced",
+"pain became manageable"
+]
+},
+
+
+"Stroke Rehabilitation":{
+problem:[
+"stroke recovery",
+"balance and movement problems",
+"weakness after stroke",
+"rehabilitation needs"
+],
+result:[
+"balance improved",
+"movement control increased",
+"confidence improved",
+"daily activities became easier"
+]
+},
+
+
+"Paralysis Rehabilitation":{
+problem:[
+"paralysis recovery",
+"muscle weakness",
+"mobility problems",
+"movement difficulty"
+],
+result:[
+"strength improved",
+"functional movement increased",
+"confidence improved",
+"mobility became better"
+]
+},
+
+
+"Post Surgery Rehabilitation":{
+problem:[
+"post surgery recovery",
+"weakness after surgery",
+"returning to normal activity",
+"movement restriction"
+],
+result:[
+"strength improved",
+"recovery progressed well",
+"movement gradually improved",
+"activity level increased"
+]
+},
+
+
+"Neurological Physiotherapy":{
+problem:[
+"neurological condition",
+"movement control problem",
+"muscle weakness",
+"coordination difficulty"
+],
+result:[
+"coordination improved",
+"mobility increased",
+"functional ability improved",
+"movement control became better"
+]
+},
+
+
+"Orthopedic Physiotherapy":{
+problem:[
+"joint pain",
+"muscle problem",
+"orthopedic condition",
+"movement restriction"
+],
+result:[
+"pain reduced",
+"mobility improved",
+"movement became easier",
+"strength increased"
+]
+},
+
+
+"Sports Injury Rehabilitation":{
+problem:[
+"sports injury",
+"muscle injury",
+"performance recovery",
+"return to activity"
+],
+result:[
+"strength improved",
+"performance improved",
+"safe activity became easier",
+"recovery progressed well"
+]
+},
+
+
+"Elderly Care Physiotherapy":{
+problem:[
+"elderly mobility issue",
+"age related weakness",
+"balance problem",
+"walking difficulty"
+],
+result:[
+"walking confidence improved",
+"balance became better",
+"independence increased",
+"daily activities improved"
+]
+}
+
+};
+
+
+
+// Different human style sentences
+
+const opening=[
+"I had a good experience with CORTEXUS for",
+"My experience with CORTEXUS was very positive for",
+"I consulted CORTEXUS regarding",
+"We chose CORTEXUS for",
+"I took physiotherapy sessions from CORTEXUS for"
+];
+
+
+const care=[
+"The therapist was polite, professional and explained exercises clearly.",
+"The home visit service was convenient and treatment was properly planned.",
+"The therapist understood the condition and guided patiently.",
+"Every session was managed professionally with proper guidance.",
+"The exercises were explained in a simple and understandable way."
+];
+
+
+const ending=[
+"I am satisfied with the overall experience.",
+"Thank you CORTEXUS for the dedicated care.",
+"I would recommend their physiotherapy service.",
+"Very happy with the professional approach.",
+"A reliable choice for home physiotherapy."
+];
+
+
+
+function random(arr){
+
+return arr[Math.floor(Math.random()*arr.length)];
+
+}
+
+
+
+// Previous reviews save
+
+let usedReviews =
+JSON.parse(localStorage.getItem("cortexus_used_reviews") || "[]");
+
+
+
+function generateReview(){
+
+let review="";
+let attempts=0;
+
+
+do{
+
+let d=data[selected];
+
+
+review =
+`${random(opening)} ${random(d.problem)}.
+${random(care)}
+With regular sessions, ${random(d.result)}.
+${random(ending)}`;
+
+
+attempts++;
+
+
+}
+while(
+usedReviews.includes(review) &&
+attempts < 1000
+);
+
+
+
+usedReviews.push(review);
+
+
+localStorage.setItem(
+"cortexus_used_reviews",
+JSON.stringify(usedReviews)
+);
+
+
+document.getElementById("review").value=review;
+
+}
+
+
+
+
+function copyAndOpen(){
+
+let text=document.getElementById("review");
+
+
+text.select();
+
+document.execCommand("copy");
+
+
+window.open(
+"https://g.page/r/CRDpyce9iCusEBM/review",
+"_blank"
+);
+
+}
+
+
+generateReview();
+
+
+</script>
+
+
+</body>
+</html>
